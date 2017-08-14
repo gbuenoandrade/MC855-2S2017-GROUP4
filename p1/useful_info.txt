@@ -1,0 +1,11 @@
+hadoop jar /usr/local/Cellar/hadoop/2.8.0/libexec/share/hadoop/tools/lib/hadoop-streaming-2.8.0.jar -mapper mapper.py -reducer reducer.py -input test/migue -output output
+
+http://localhost:50070/
+
+hadoop fs -copyFromLocal /tmp/gutenberg /user/hduser/gutenberg
+
+
+
+tuts topzera
+	https://dtflaneur.wordpress.com/2015/10/02/installing-hadoop-on-mac-osx-el-capitan/
+	http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/
