@@ -12,5 +12,5 @@ Analisar a postura da sociedade com relação a tópicos conservadores a fim de 
 ## Plano de trabalho
 * @gbuenoandrade - Tweetpy, Hadoop e análise de sentimentos
 * @felipefutty - Hadoop e análise de sentimentos
-* @danilomendes - Pré-processamento e ferramenta para plotar gráficos
-* @zorba - Pré-processamento e ferramenta para plotar gráficos
+* @danilomendes12 - Pré-processamento e ferramenta para plotar gráficos
+* @henriquefischer - Pré-processamento e ferramenta para plotar gráficos
