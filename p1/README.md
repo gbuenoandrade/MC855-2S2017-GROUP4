@@ -13,4 +13,16 @@ Analisar a postura da sociedade com relação a tópicos conservadores a fim de 
 * @gbuenoandrade - Tweetpy, Hadoop e análise de sentimentos
 * @felipefutty - Hadoop e análise de sentimentos
 * @danilomendes12 - Pré-processamento e ferramenta para plotar gráficos
-* @henriquefischer - Pré-processamento e ferramenta para plotar gráficos
+
+
+## Apresentação de Resultados
+
+Os resultados serão mostrados graficamente de acordo com dois parâmetros: timeframe e região. Além disso, para cada parâmetro selecionado produziremos o word cloud equivalente.
+ 
+### Timeframe
+
+Escolha de um período de tweets para que sejam analisado. Dessa forma, pode-se verificar como o sentimento tem variado ao longo do tempo. 
+
+### Região
+
+Possibilitará a escolha de algumas macro-regiões, as quais serão comparadas para que possa visualizar como cada região se comporta em relação ao tópico analisado.
