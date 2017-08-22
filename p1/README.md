@@ -4,7 +4,7 @@ Analisar a postura da sociedade com relação a tópicos conservadores a fim de 
 
 ## Implementação
 
-~~* Lib *Tweepy* para interagir com a API do Twitter e baixar tweets mencionando tópicos como *racism, immigration, homo-affective union*~~
+* ~~Lib *Tweepy* para interagir com a API do Twitter e baixar tweets mencionando tópicos como *racism, immigration, homo-affective union*~~
 * Lib *GetOldTweets* para interagir com a API do Twitter e baixar tweets mencionando tópicos como *racism, immigration, homo-affective union* (Tweetpy não permite buscar tweets com mais de uma semana de vida)
 * Hadoop MapReduce para escalar a análise de sentimentos
 * Libs em Python para remoção de stopwords, stemming e análise propriamente dita
