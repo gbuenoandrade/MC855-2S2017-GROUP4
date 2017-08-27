@@ -62,7 +62,7 @@ class Analyzer:
                 f.write(word+'\n')
 
     def classify(self, text):
-        features = self._get_features(text)
+        features = self._get_features(self._tokenize(text))
         ans = self.classifier.prob_classify(features)
         pos = ans._prob_dict['pos']
         neg = ans._prob_dict['neg']
