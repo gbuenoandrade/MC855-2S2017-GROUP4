@@ -6,11 +6,14 @@ import pickle
 
 
 class Analyzer:
-
-    def __init__(self):
+    def __init__(self, project_path, should_train=False):
+        self.project_path = project_path
         self.st = PorterStemmer()
         self.stop_words = set(stopwords.words('english'))
-        self._load()
+        if should_train:
+            self._train()
+        else:
+            self._load()
 
     def _tokenize(self, text):
         raw_tokens = word_tokenize(text)
@@ -22,10 +25,10 @@ class Analyzer:
         return tokens
 
     def _load(self):
-        with open('classifier.pickle', 'rb') as f:
+        with open(self.project_path + '/analyzer/classifier.pickle', 'rb') as f:
             self.classifier = pickle.load(f)
 
-        with open('words.txt', 'r') as f:
+        with open(self.project_path + '/analyzer/words.txt', 'r') as f:
             self.words = set([line.rstrip('\n') for line in f])
 
     def _get_features(self, tokens):
@@ -37,11 +40,9 @@ class Analyzer:
     def _train(self):
         self.words = set()
         training = []
-        # TODO fix these paths!!!!!!
-        with open('raw_training.txt', 'r') as f:
+        with open(self.project_path + '/analyzer/raw_training.txt', 'r') as f:
             raw = []
             lines = f.readlines()
-            # TODO change lines
             for line in lines:
                 label = 'pos' if line[0] == '1' else 'neg'
                 tokens = self._tokenize(line[2:])
@@ -53,10 +54,10 @@ class Analyzer:
         self.classifier = nltk.NaiveBayesClassifier.train(training)
         self.classifier.show_most_informative_features()
 
-        with open('classifier.pickle', 'wb') as f:
+        with open(self.project_path + '/analyzer/classifier.pickle', 'wb') as f:
             pickle.dump(self.classifier, f)
 
-        with open('words.txt', 'w') as f:
+        with open(self.project_path + '/analyzer/words.txt', 'w') as f:
             for word in self.words:
                 f.write(word+'\n')
 
@@ -70,8 +71,3 @@ class Analyzer:
         if dist > 0.25:
             return 1 if pos > neg else -1
         return 0
-
-
-analyzer = Analyzer()
-ans = analyzer.classify('trump is awful but pretty at the same time and I love him actually')
-print(ans)
