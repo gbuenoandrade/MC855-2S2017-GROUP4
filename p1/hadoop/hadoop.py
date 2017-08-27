@@ -1,7 +1,7 @@
 import os
 
-class Hadoop:
 
+class Hadoop:
     def __init__(self, hdfs_folder):
         self.hdfs_folder = hdfs_folder
 
@@ -27,4 +27,4 @@ class Hadoop:
     def run(self, input_path):
         self._execute_sys_calls(input_path)
         output = self._get_and_delete_output()
-        print(output)
+        return output

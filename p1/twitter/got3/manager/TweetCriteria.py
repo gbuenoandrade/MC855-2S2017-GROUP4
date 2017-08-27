@@ -27,6 +27,14 @@ class TweetCriteria:
 		self.lang = Lang
 		return self
 
-	def setTopTweets(self, topTweets):
- 		self.topTweets = topTweets
- 		return self
+	# def setTopTweets(self, topTweets):
+ 	# 	self.topTweets = topTweets
+ 	# 	return self
+    #
+	# def setNear(self, near):
+	# 	self.near = near
+	# 	return self
+    #
+	# def setWithin(self, within):
+	# 	self.within = within
+	# 	return self
