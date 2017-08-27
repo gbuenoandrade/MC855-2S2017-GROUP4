@@ -1,4 +1,4 @@
-hadoop jar /usr/local/Cellar/hadoop/2.8.0/libexec/share/hadoop/tools/lib/hadoop-streaming-2.8.0.jar -mapper mapper.py -reducer reducer.py -input test/migue -output output
+hadoop jar hadoop-streaming-2.8.0.jar -mapper mapper.py -reducer reducer.py -input input.txt -output output
 
 http://localhost:50070/
 
