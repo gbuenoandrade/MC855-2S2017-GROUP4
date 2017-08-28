@@ -1,3 +1,4 @@
 pyquery
 lxml
 nltk
+matplotlib
