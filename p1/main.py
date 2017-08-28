@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import time
 
 from threading import Thread
@@ -19,7 +20,7 @@ def get_points(keywords, since, until):
         time.sleep(1)
         vals = [('2016-08-27', 662.0), ('2016-10-02', -3008.0), ('2016-11-08', -624201.0), ('2016-12-14', -4461.0), ('2017-01-20', -33.0), ('2017-02-25', 44705.0), ('2017-04-03', -71635.0), ('2017-05-09', 18293.0), ('2017-06-15', -244.0), ('2017-07-21', -14407.0), ('2017-08-27', -30.0)]
     else:
-        Twitter.get_tweets(keywords, since, until, points=20, tweets_per_point=5)
+        Twitter.get_tweets(keywords, since, until, points=20, tweets_per_point=10)
         vals = Hadoop(HADOOP_USER_FOLDER).run('tweets.txt')
     acc = 0
     xs = list()
