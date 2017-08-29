@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import time
+import calendar
 
 from threading import Thread
 from hadoop import *
@@ -10,7 +11,7 @@ from matplotlib.figure import Figure
 from tkinter import *
 
 # ********** PAY ATTENTION TO THESE VALUES **********
-DEBUG = True
+DEBUG = False
 HADOOP_USER_FOLDER = '/user/gandrade'
 # ***************************************************
 
@@ -113,15 +114,29 @@ class MainFrame(Frame):
                 w.config(width=8)
             w.grid(row=row, column=idx, padx=5, pady=2)
 
+    @staticmethod
+    def get_x_label(x):
+        date = datetime.fromtimestamp(x)
+        year = date.year%100
+        month = calendar.month_name[date.month][:3]
+        return '%s-%d' % (month, year)
+
     def update_graph(self, points):
         xs, ys = points
         print(xs, ys)
+        if len(xs) == 0:
+            return
         for child in self.winfo_children()[1:]:
             child.destroy()
         Label(self, text='Epoch x Accumulated Sentiment').pack(side=TOP, fill=BOTH, expand=True)
         f = Figure(figsize=(5, 5), dpi=100)
         a = f.add_subplot(111)
         a.plot(xs, ys)
+        xmin = xs[0]
+        n = len(xs)
+        xmax = xs[n-1]
+        a.set_xticks([xmin + (float(i)/n)*(xmax-xmin) for i in range(n)], minor=False)
+        a.set_xticklabels([self.get_x_label(x) for x in xs], minor=False)
         canvas = FigureCanvasTkAgg(f, self)
         canvas.show()
         canvas.get_tk_widget().pack(side=BOTTOM, fill=BOTH, expand=True)
