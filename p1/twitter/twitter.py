@@ -18,7 +18,7 @@ class SimpleTweet:
         return '%d - %s' % (self.score(), self.text)
 
     def score(self):
-        return 1 + self.retweets + self.favorites  # TODO improve this
+        return min(1 + self.retweets + self.favorites, 50)  # TODO improve this
 
 
 class Twitter:
