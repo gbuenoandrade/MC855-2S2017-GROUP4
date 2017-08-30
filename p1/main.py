@@ -115,11 +115,12 @@ class MainFrame(Frame):
             w.grid(row=row, column=idx, padx=5, pady=2)
 
     @staticmethod
-    def get_x_label(x):
+    def get_x_label(x, print_day):
         date = datetime.fromtimestamp(x)
-        year = date.year%100
+        day = date.day
+        year = date.year % 100
         month = calendar.month_name[date.month][:3]
-        return '%s-%d' % (month, year)
+        return '%s-%.2d' % (month, year) if not print_day else '%d-%s' % (day, month)
 
     def update_graph(self, points):
         xs, ys = points
@@ -128,15 +129,15 @@ class MainFrame(Frame):
             return
         for child in self.winfo_children()[1:]:
             child.destroy()
-        Label(self, text='Epoch x Accumulated Sentiment').pack(side=TOP, fill=BOTH, expand=True)
         f = Figure(figsize=(5, 5), dpi=100)
         a = f.add_subplot(111)
         a.plot(xs, ys)
         xmin = xs[0]
         n = len(xs)
         xmax = xs[n-1]
-        a.set_xticks([xmin + (float(i)/n)*(xmax-xmin) for i in range(n)], minor=False)
-        a.set_xticklabels([self.get_x_label(x) for x in xs], minor=False)
+        a.set_xticks([xmin + (float(i)/max(n-1, 1))*(xmax-xmin) for i in range(n)], minor=False)
+        a.set_xticklabels([self.get_x_label(x, xmax-xmin < 2592000) for x in xs], minor=False)
+        a.set_title('Accumulated Sentiment vs Time')
         canvas = FigureCanvasTkAgg(f, self)
         canvas.show()
         canvas.get_tk_widget().pack(side=BOTTOM, fill=BOTH, expand=True)
