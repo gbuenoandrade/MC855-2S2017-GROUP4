@@ -67,7 +67,19 @@ class Analyzer:
         pos = ans._prob_dict['pos']
         neg = ans._prob_dict['neg']
         dist = abs(pos-neg)
-        # TODO verify this constant
         if dist > 0.25:
             return 1 if pos > neg else -1
         return 0
+
+
+def demo():
+    s1 = 'Immigrants suck! #deportation'
+    s2 = 'America is all about immigration!'
+    s3 = "#MiaLove , mayor of Saratoga Springs, Utah is a popular speaker at #RNC2012 ." \
+         " The child of #Haitian immigrants ; she's running for Congress"
+    analyzer = Analyzer('/Users/gandrade/Desktop/MC855-2S2017-group4/p1')
+    for s in [s1, s2, s3]:
+        print('sentiment(%s) = %d' % (s, analyzer.classify(s)))
+
+if __name__ == '__main__':
+    demo()

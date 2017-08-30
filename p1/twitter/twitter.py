@@ -1,10 +1,6 @@
 from datetime import datetime, timedelta
+import twitter.got3 as got
 
-import sys
-if sys.version_info[0] < 3:
-    import twitter.got
-else:
-    import twitter.got3 as got
 
 class SimpleTweet:
     def __init__(self, tweet):
@@ -18,7 +14,7 @@ class SimpleTweet:
         return '%d - %s' % (self.score(), self.text)
 
     def score(self):
-        return 1 + self.retweets + self.favorites  # TODO improve this
+        return min(1 + self.retweets + self.favorites, 50)
 
 
 class Twitter:
