@@ -1,3 +1,8 @@
+## Como usar
+
+Com o cluster Hadoop rodando, basta definir corretamente a variável
+`HADOOP_USER_FOLDER = '/user/gandrade'` no arquivo main.py:15 e executar o mesmo.
+
 ## Tema
 
 Analisar a postura da sociedade com relação a tópicos conservadores a fim de se validar/refutar a tese de que estes estão em alta através de análise de sentimento de tweets.
