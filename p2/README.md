@@ -11,14 +11,18 @@ Extensão do projeto 1 (análise de sentimento de tweets que tratam certos tópi
 
 ## Plano de trabalho
 
-* @gbuenoandrade - Tweetpy e Spark
-* @felipefutty - Melhora da interface e Spark
-* @danilomendes12 - Melhora dos scores e Spark
+* @gbuenoandrade - Melhoramentos na  base de dados e estudo/implementação do Spark
+* @felipefutty - Melhoramento na base de dados e treinamenento e adicionar processamento no projeto distribuído
+* @danilomendes12 - Melhoramentos no Pré-processamento e ferramenta para plotar gráficos
 
 ## Testes iniciais / PoC
-
+* Leitura e instalação do ``Spark`` **DONE**
 * [Experimento com Spark e Python](http://www.ic.unicamp.br/~islene/2s2017-mc855/explorando-spark.html)
 * [Introduction to Apache Spark on Databricks](https://docs.databricks.com/_static/notebooks/gentle-introduction-to-apache-spark.html)
+* Reimplementação do projeto 1 em ``Spark``
+* Melhoramento da base de dados de trainemento
+* Implementação em um cluster com máquinas dos integrantes do grupo
+* Comparação de resultados com o obtido no ``Hadoop```
 
 ## Apresentação de Resultados
 
