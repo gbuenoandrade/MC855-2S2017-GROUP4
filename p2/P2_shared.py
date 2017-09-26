@@ -83,10 +83,11 @@ display(twitter_rdd.toDF())
 
 # COMMAND ----------
 
-hdfs_words = sc.textFile('/FileStore/tables/sr8ihh7y1506446202982/words.txt').collect()
-hdfs_stop_words = sc.textFile('/FileStore/tables/w1e4auk11506448152061/stop_words.txt').collect()
+hdfs_words = requests.get('https://raw.githubusercontent.com/gbuenoandrade/MC855-2S2017-group4/master/p2/aux_files/words.txt').text.split()
 
-r = requests.get('https://github.com/gbuenoandrade/MC855-2S2017-group4/raw/master/p2/classifier.pickle')
+hdfs_stop_words = requests.get('https://raw.githubusercontent.com/gbuenoandrade/MC855-2S2017-group4/master/p2/aux_files/stop_words.txt').text.split()
+
+r = requests.get('https://github.com/gbuenoandrade/MC855-2S2017-group4/raw/master/p2/aux_files/classifier.pickle')
 classifier_path = '/tmp/classifier.pickle'
 with open(classifier_path, 'wb') as f:
     for chunk in r.iter_content(chunk_size=1024): 
