@@ -1,3 +1,6 @@
+##Notebook
+* [P2_shared](https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/5192146202502476/1360120709539235/3726768190525689/latest.html)
+
 ## Tema
 
 Extensão do projeto 1 (análise de sentimento de tweets que tratam certos tópicos) fazendo uso do Sparks e da API oficial do Twitter a fim de por-se a prova o poderio do cluster analisando quantidades massivas de tweets.
