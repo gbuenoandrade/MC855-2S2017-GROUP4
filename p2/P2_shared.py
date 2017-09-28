@@ -185,6 +185,7 @@ class Analyzer:
 # MAGIC # Spark
 # MAGIC ***
 # MAGIC * Ambiente do *Databricks* já configurado
+# MAGIC * Integração 'natural' com *Python*
 # MAGIC * Maior nível de abstração oferecido pelo *Apache Spark*
 # MAGIC * Mapping step
 # MAGIC     * Score com sinal
