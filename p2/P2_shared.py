@@ -1,4 +1,23 @@
 # Databricks notebook source
+# MAGIC %md
+# MAGIC # Mensurando potencial onda conservadora
+# MAGIC ## via Twitter e Spark
+# MAGIC ***
+# MAGIC * Danilo Mendes
+# MAGIC * Felipe Rodrigues
+# MAGIC * Guilherme Andrade
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC # Twitter - Nova abordagem
+# MAGIC ***
+# MAGIC * Rest API
+# MAGIC     * Limitação temporal
+# MAGIC * Spark RDD
+
+# COMMAND ----------
+
 import urllib
 import requests
 from requests_oauthlib import OAuth1
@@ -16,7 +35,7 @@ class SimpleTweet:
         return '%d - %s' % (self.score(), self.text)
 
     def score(self):
-        return min(1 + self.retweets + self.favorites, 250)
+        return min(1 + 2*self.retweets + self.favorites, 1000)
       
 class Twitter:
     API_KEY = '6TakVUGxzdk3gWLrhy9Qi5PNG'
@@ -73,13 +92,30 @@ class Twitter:
 
 # COMMAND ----------
 
-QUERY = 'muslims OR racism'
-FROM = '2017-09-16'
-TO = '2017-09-26'
-COUNT = 1000
+# MAGIC %md
+# MAGIC # Queries
+# MAGIC ***
+# MAGIC * Keywords
+# MAGIC * Desde
+# MAGIC * Até
+# MAGIC * Número máximo de tweets
 
-twitter_rdd = Twitter.get_twitter_rdd(QUERY, FROM, TO, COUNT)
+# COMMAND ----------
+
+QUERY = 'muslims OR immigrants'
+FROM = '2017-09-18'
+TO = '2017-09-28'
+N = 1000
+
+twitter_rdd = Twitter.get_twitter_rdd(QUERY, FROM, TO, N)
 display(twitter_rdd.toDF())
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC # Setup do Classificador
+# MAGIC ***
+# MAGIC * Uso do classifier treinado na primeira parte
 
 # COMMAND ----------
 
@@ -145,6 +181,16 @@ class Analyzer:
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC # Spark
+# MAGIC ***
+# MAGIC * Ambiente do *Databricks* já configurado
+# MAGIC * Maior nível de abstração oferecido pelo *Apache Spark*
+# MAGIC * Mapping step
+# MAGIC     * Score com sinal
+
+# COMMAND ----------
+
 def signedScore(x):
   sign = analyzer.classify(x['text'])
   return Row(timestamp=x['timestamp'], text=x['text'], score=sign*x['score'])
@@ -155,8 +201,25 @@ display(signed_twitter_rdd.toDF())
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC # Spark
+# MAGIC ***
+# MAGIC * Reducing step
+# MAGIC     * Acumulação de scores por dia
+
+# COMMAND ----------
+
 reduced = signed_twitter_rdd.map(lambda x: Row(key=x['timestamp'], score=x['score'])).reduceByKey(lambda accum, n: accum + n)
 display(reduced.toDF())
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC # Visualização dos resultados
+# MAGIC ***
+# MAGIC * Obtenção do acumulado geral
+# MAGIC * Exibição de data frames
+# MAGIC * Geração de gráficos
 
 # COMMAND ----------
 
