@@ -7,9 +7,9 @@ A ideia é criar uma feature de prioridade na fila para que outras features poss
 O objetivo será procurar esses problemas, aponta-los e caso sejam verdade, resolve-los.
 
 ## Plano de trabalho
-*Estudo da feature
-*Estudo da fila do Yarn
-*Investigar o que já foi feito e executar
-*Analisar os possíveis problemas apontados no forum
-*Solucionar
+* Estudo da feature
+* Estudo da fila do Yarn
+* Investigar o que já foi feito e executar
+* Analisar os possíveis problemas apontados no forum
+* ßßSolucionar
 
