@@ -1,19 +1,15 @@
-## Isssue tipo Umbrella
+## Issue tipo Umbrella
 
-A issue escolhida foi [YARN-6650](https://issues.apache.org/jira/browse/YARN-6650). Ele não apresenta um problema na versão corrente, mas sim possíveis problemas com upgrades. 
+A issue escolhida foi a [YARN-4945](https://issues.apache.org/jira/browse/YARN-4945). A issue é do tipo Umbrella e tem prioridade Major. 
 
-O bug é do tipo de ``security``, adicionado como prioridade ``Major``. Ela afeta a versão 2.8.0.
+A ideia é criar uma feature de prioridade na fila para que outras features possam ser implementadas também. Já existe um fórum de discussão bem extenso sobre essa issue, e alguns comentários que pregam que o que já foi feito possui alguns problemas de compatibilidade e otimização.
 
-Ela foi reportada por [Jason Lowe](https://issues.apache.org/jira/secure/ViewProfile.jspa?name=jlowe) na data de 25 de maio de 2017. O usuário possui histórico de algumas issues nos projetos apache, o que credibiliza o problema reportado.
-
-Para reproduzir o bug, iremos configurar um RM e um NM simples, sendo que cada um possui versões diferentes do protocolo de serialização ContainerTokenIdentifier. Isso deve causar um conflito.
-
-A solução possível (proposta pelo autor), que os bytes recebidos via RPC precisaria ser usado para o processo de verificação, não os bytes gerados pela recodificação (o que força ter que coincidir o RM e NM).
+O objetivo será procurar esses problemas, aponta-los e caso sejam verdade, resolve-los.
 
 ## Plano de trabalho
+* Estudo da feature
+* Estudo da fila do Yarn
+* Investigar o que já foi feito e executar
+* Analisar os possíveis problemas apontados no forum
+* ßßSolucionar
 
-* Leitura e instalação do ``Yarn``
-* Estudo do bug no código
-* Configuração de um RM e NM com versões conflitantes
-* Verificar o conflito esperado
-* Adiconar e verificar possível solução
